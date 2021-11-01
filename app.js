@@ -94,14 +94,20 @@ const deleteTour = (req, res) => {
   });
 }
 
-app.route('/api/v1/tours')
+const tourRouter = express.Router();
+
+tourRouter
+  .route('/')
   .get(getAllTours)
   .post(createTour);
 
-app.route('/api/v1/tours/:id')
+tourRouter
+  .route('/:id')
   .get(getTour)
   .patch(updateTour)
   .delete(deleteTour);
+
+app.use('/api/v1/tours', tourRouter);
 
 app.listen(port, () => {
   console.log(`Listening to requets on port ${port}...`);
