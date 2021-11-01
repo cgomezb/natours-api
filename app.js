@@ -1,9 +1,13 @@
 const express = require('express');
 const fs = require('fs');
-const { get } = require('http');
 
 const app = express();
 app.use(express.json());
+
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString();
+  next();
+});
 
 const port = 3000;
 const toursFileName = 'tours-simple.json';
