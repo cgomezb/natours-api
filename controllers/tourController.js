@@ -9,6 +9,19 @@ function readFileSync(fileName) {
   );
 }
 
+exports.checkId = (req, res, next, id) => {
+  const tour = tours.find(tour => tour.id === +id);
+
+  if (!tour) {
+    res.status(404).json({
+      status: 'fail',
+      message: 'Invalid ID'
+    });
+  }
+
+  next();
+}
+
 exports.getAllTours = (req, res) => {
   res.status(200).json({
     status: 'success',
@@ -20,13 +33,6 @@ exports.getAllTours = (req, res) => {
 exports.getTour = (req, res) => {
   const { id } = req.params;
   const tour = tours.find(tour => tour.id === +id);
-
-  if (!tour) {
-    res.status(404).json({
-      status: 'fail',
-      message: 'Invalid ID'
-    });
-  }
 
   res.status(200).json({
     status: 'success',
@@ -57,13 +63,6 @@ exports.updateTour = (req, res) => {
   const { id } = req.params;
   const tour = tours.find(tour => tour.id === +id);
 
-  if (!tour) {
-    res.status(404).json({
-      status: 'fail',
-      message: 'Invalid ID'
-    });
-  }
-
   res.status(200).json({
     status: 'success',
     data: { tour }
@@ -71,16 +70,6 @@ exports.updateTour = (req, res) => {
 }
 
 exports.deleteTour = (req, res) => {
-  const { id } = req.params;
-  const tour = tours.find(tour => tour.id === +id);
-
-  if (!tour) {
-    res.status(404).json({
-      status: 'fail',
-      message: 'Invalid ID'
-    });
-  }
-
   res.status(204).json({
     status: 'success',
     data: null
