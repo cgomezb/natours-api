@@ -13,9 +13,22 @@ exports.checkId = (req, res, next, id) => {
   const tour = tours.find(tour => tour.id === +id);
 
   if (!tour) {
-    res.status(404).json({
+    return res.status(404).json({
       status: 'fail',
       message: 'Invalid ID'
+    });
+  }
+
+  next();
+}
+
+exports.checkBody = (req, res, next) => {
+  const { name, price } = req.body;
+
+  if (!name || !price) {
+    return res.status(400).json({
+      status: 'fail',
+      message: 'Missing name or price'
     });
   }
 
