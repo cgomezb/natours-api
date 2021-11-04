@@ -1,0 +1,30 @@
+GET http://127.0.0.1:8000/api/v1/tours
+
+###
+GET http://127.0.0.1:8000/api/v1/tours/5
+
+###
+
+POST http://127.0.0.1:8000/api/v1/tours
+content-type: application/json
+
+{
+  "name": "Test Tour",
+  "duration": 10,
+  "difficulty":  "easy"
+}
+
+###
+
+PATCH http://127.0.0.1:8000/api/v1/tours/5
+content-type: application/json
+
+{
+  "name": "Test Tour",
+  "duration": 10,
+  "difficulty":  "easy"
+}
+
+###
+
+DELETE http://127.0.0.1:8000/api/v1/tours/5
