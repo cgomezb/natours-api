@@ -7,7 +7,8 @@
     "start:dev": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
     "startAuth:dev": "nodemon server.js",
-    "startAuth:prod": "NODE_ENV=production nodemon server.js"
+    "startAuth:prod": "NODE_ENV=production nodemon server.js",
+    "debug": "ndb server.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "ndb": "^1.1.5",
     "nodemon": "^2.0.14"
   }
 }
