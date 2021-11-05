@@ -1,6 +1,25 @@
 # natours-api
 Node Js API using Express
 
+## Installation
+
+```bash
+$ npm install
+```
+
+## Running the app
+
+```bash
+# development mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
+
+# debug mode
+$ npm run debug
+```
+
 ## Commit messages
 
 ### type
